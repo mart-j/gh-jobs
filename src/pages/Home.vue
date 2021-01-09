@@ -32,29 +32,25 @@
   <div>
     <input placeholder="Search City" v-model="selectedCity" type="search" />
   </div>
-  <div v-if="!title">
-    <div v-for="(job, i) in filteredJobs" :key="i">
-      <div>{{ job.location }}</div>
-      <div>{{ job.type }}</div>
-      <div>{{ job.title }}</div>
-      <hr />
-    </div>
-  </div>
-  <div v-else>
-    <div v-for="(job, i) in searchTitles" :key="i">
-      <div>{{ job.location }}</div>
-      <div>{{ job.type }}</div>
-      <div>{{ job.title }}</div>
-      <hr />
-    </div>
-  </div>
+  <JobList
+    :title="title"
+    :filteredJobs="filteredJobs"
+    :searchTitles="searchTitles"
+  >
+  <Job
+  :filteredJobs="title ? filteredJobs : searchTitles"
+  :title="title"
+  />
+  </JobList>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import fetchData from '../api';
+import Job from '../components/singleJob/job.vue';
+import JobList from '../components/jobList/JobList.vue';
 
-type Job = {
+export type JobType = {
   company: string;
   company_logo: string;
   company_url: string;
@@ -69,13 +65,18 @@ type Job = {
 };
 
 type Data = {
-  jobs: Job[];
+  jobs: JobType[];
   selectedCity: string;
   fullTime: boolean;
   title: string;
 };
 
 export default defineComponent({
+  components: {
+    JobList,
+    Job,
+  },
+
   data(): Data {
     return {
       jobs: [],
@@ -89,7 +90,7 @@ export default defineComponent({
     fullTimeJob(): string {
       return this.fullTime ? 'Full Time' : '';
     },
-    filteredJobs(): Job[] {
+    filteredJobs(): JobType[] {
       return this.jobs.filter((job) => {
         const { type, location } = job;
         const includesCity = location.toLowerCase().includes(this.selectedCity.toLowerCase());
@@ -101,7 +102,7 @@ export default defineComponent({
         return includesCity;
       });
     },
-    searchTitles(): Job[] {
+    searchTitles(): JobType[] {
       return this.filteredJobs.filter((job) => {
         const title = this.title.toLowerCase();
         return job.title.toLowerCase().includes(title);
