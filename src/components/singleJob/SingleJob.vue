@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!title">
+    <div>
         <div v-for="(job, i) in filteredJobs" :key="i">
         <div>{{ job.location }}</div>
         <div>{{ job.type }}</div>
