@@ -17,8 +17,14 @@
     </div>
     <div class="col-xs-7">
       <JobList>
-        <Job :filteredJobs="!title ? filteredJobs : searchTitles" :title="title" />
+        <Job :filteredJobs="!title ? splittedArray[pageNumber] : searchTitles" :title="title" />
       </JobList>
+      <div v-if="!title">
+        <button :disabled="pageNumber < 1" @click="pageNumber -= 1">prev</button>
+        <button :disabled="pageNumber > splittedArray.length - 2" @click="pageNumber += 1">
+          next
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -35,6 +41,7 @@ type Data = {
   selectedCity: string;
   fullTime: boolean;
   title: string;
+  pageNumber: number;
 };
 
 export default defineComponent({
@@ -50,7 +57,14 @@ export default defineComponent({
       selectedCity: '',
       fullTime: false,
       title: '',
+      pageNumber: 0,
     };
+  },
+
+  watch: {
+    selectedCity() {
+      this.pageNumber = 0;
+    },
   },
   computed: {
     fullTimeJob(): string {
@@ -58,7 +72,7 @@ export default defineComponent({
     },
     filteredJobs(): JobType[] {
       // eslint-disable-next-line arrow-parens
-      return this.jobList.filter(job => {
+      return this.jobList.filter((job) => {
         const { type, location } = job;
         const includesCity = location.toLowerCase().includes(this.selectedCity.toLowerCase());
         const includesType = type === 'Full Time';
@@ -68,9 +82,18 @@ export default defineComponent({
         return includesCity;
       });
     },
+    splittedArray(): JobType[][] {
+      const newJobs = [...this.filteredJobs];
+      const chunks = [];
+      let i = 0;
+      while (i < newJobs.length) {
+        chunks.push(newJobs.slice(i, (i += 5)));
+      }
+      return chunks;
+    },
     searchTitles(): JobType[] {
       // eslint-disable-next-line arrow-parens
-      return this.filteredJobs.filter(job => {
+      return this.filteredJobs.filter((job) => {
         const title = this.title.toLowerCase();
         return job.title.toLowerCase().includes(title);
       });

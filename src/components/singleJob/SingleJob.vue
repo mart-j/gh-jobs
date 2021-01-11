@@ -52,6 +52,7 @@ export default defineComponent({
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .jobCard {
+  cursor: pointer;
   display: flex;
   background-color: white;
   margin-bottom: 20px;

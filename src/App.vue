@@ -1,7 +1,9 @@
 <template>
   <div class="row">
     <div class="col-xs-offset-1 col-xs-10">
-      <Logo />
+      <div class="logoWrapper">
+        <Logo />
+      </div>
     </div>
   </div>
   <router-view />
@@ -22,9 +24,9 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: #f6f7fb;
   font-weight: 500;
+  padding-top: 32px;
 }
-.logo {
-  margin-top: 32px;
+.logoWrapper {
   margin-bottom: 32px;
 }
 </style>

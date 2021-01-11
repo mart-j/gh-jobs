@@ -76,7 +76,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .sidebar {
   padding-right: 20px;
 }
@@ -110,6 +110,10 @@ export default defineComponent({
 }
 
 .searchField {
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.247);
   padding: 10px;
   width: 100%;
   margin-bottom: 24px;
@@ -118,12 +122,18 @@ export default defineComponent({
 .clearButton {
   margin-left: 10px;
   outline: none;
-  border: 1px solid #b9bdcf;
+  border: none;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.247);
   border-radius: 6px;
   background: white;
   cursor: pointer;
   font-size: 16px;
   padding: 8px;
-  color: #334680;
+  color: #334680c0;
+  transition: all 0.2s;
+  &:hover {
+    color: #334680ea;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.459);
+  }
 }
 </style>
