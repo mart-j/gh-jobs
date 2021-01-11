@@ -1,5 +1,5 @@
 <template>
-	<div class="logo"><b>Github</b> Jobs</div>
+  <div class="logo"><b>Github</b> Jobs</div>
 </template>
 
 <script lang="ts">
@@ -10,6 +10,6 @@ export default defineComponent({});
 
 <style>
 .logo {
-	font-size: 24px;
+  font-size: 24px;
 }
 </style>
