@@ -45,74 +45,75 @@ type Data = {
 };
 
 export default defineComponent({
-  components: {
-    JobList,
-    Job,
-    Header,
-    Sidebar,
-  },
+	components: {
+		JobList,
+		Job,
+		Header,
+		Sidebar,
+	},
 
-  data(): Data {
-    return {
-      selectedCity: '',
-      fullTime: false,
-      title: '',
-      pageNumber: 0,
-    };
-  },
+	data(): Data {
+		return {
+			selectedCity: '',
+			fullTime: false,
+			title: '',
+			pageNumber: 0,
+		};
+	},
 
-  watch: {
-    selectedCity() {
-      this.pageNumber = 0;
-    },
-  },
-  computed: {
-    fullTimeJob(): string {
-      return this.fullTime ? 'Full Time' : '';
-    },
-    filteredJobs(): JobType[] {
-      // eslint-disable-next-line arrow-parens
-      return this.jobList.filter((job) => {
-        const { type, location } = job;
-        const includesCity = location.toLowerCase().includes(this.selectedCity.toLowerCase());
-        const includesType = type === 'Full Time';
-        if (this.fullTime && !this.title) {
-          return includesCity && includesType;
-        }
-        return includesCity;
-      });
-    },
-    splittedArray(): JobType[][] {
-      const newJobs = [...this.filteredJobs];
-      const chunks = [];
-      let i = 0;
-      while (i < newJobs.length) {
-        chunks.push(newJobs.slice(i, (i += 5)));
-      }
-      return chunks;
-    },
-    searchTitles(): JobType[] {
-      // eslint-disable-next-line arrow-parens
-      return this.filteredJobs.filter((job) => {
-        const title = this.title.toLowerCase();
-        return job.title.toLowerCase().includes(title);
-      });
-    },
-  },
-  mixins: [apiMixin],
+	watch: {
+		selectedCity() {
+			this.pageNumber = 0;
+		},
+	},
+	computed: {
+		fullTimeJob(): string {
+			return this.fullTime ? 'Full Time' : '';
+		},
+		filteredJobs(): JobType[] {
+			// eslint-disable-next-line arrow-parens
+			return this.jobList.filter(job => {
+				const { type, location } = job;
+				const includesCity = location.toLowerCase().includes(this.selectedCity.toLowerCase());
+				const includesType = type === 'Full Time';
+				if (this.fullTime && !this.title) {
+					return includesCity && includesType;
+				}
+				return includesCity;
+			});
+		},
+		splittedArray(): JobType[][] {
+			const newJobs = [...this.filteredJobs];
+			const chunks = [];
+			let i = 0;
+			while (i < newJobs.length) {
+				chunks.push(newJobs.slice(i, (i += 5)));
+			}
+			return chunks;
+		},
+		searchTitles(): JobType[] {
+			// eslint-disable-next-line arrow-parens
+			return this.filteredJobs.filter(job => {
+				const title = this.title.toLowerCase();
+				return job.title.toLowerCase().includes(title);
+			});
+		},
+	},
+	mixins: [apiMixin],
 
-  methods: {
-    searchHandler(inputValue: string) {
-      this.title = inputValue;
-    },
-    clearAllFilters() {
-      this.title = '';
-      this.selectedCity = '';
-      this.fullTime = false;
-    },
-  },
+	methods: {
+		searchHandler(inputValue: string) {
+			this.title = inputValue;
+		},
+		clearAllFilters() {
+			this.title = '';
+			this.selectedCity = '';
+			this.fullTime = false;
+		},
+	},
 });
 </script>
+
 <style>
 .margin-bottom--42 {
   margin-bottom: 42px;

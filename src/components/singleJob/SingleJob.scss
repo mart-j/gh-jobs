@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.jobCard {
+  cursor: pointer;
+  display: flex;
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  color: #334680;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.logo {
+  border-radius: 4px;
+}
+
+.cardFooter {
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jobTitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  color: #334680;
+}
+
+.jobType {
+  border: 1px solid #334680;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.timeLocationWrapper {
+  display: flex;
+  color: #b7bcce;
+}
+
+.timeLocationWrapper div {
+  margin-right: 20px;
+}
+
+.companyName {
+  font-size: 12px;
+  font-weight: bold;
+}

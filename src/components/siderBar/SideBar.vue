@@ -68,72 +68,14 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  emits: ['update:searchCity', 'clickHandler', 'update:selectedCity', 'update:fullTime'],
-  props: {
-    fullTime: { type: Boolean, required: true },
-    selectedCity: { type: String, required: true },
-  },
+	emits: ['update:searchCity', 'clickHandler', 'update:selectedCity', 'update:fullTime'],
+	props: {
+		fullTime: { type: Boolean, required: true },
+		selectedCity: { type: String, required: true },
+	},
 });
 </script>
 
 <style scoped lang="scss">
-.sidebar {
-  padding-right: 20px;
-}
-
-.cities {
-  margin-left: 10px;
-  margin-bottom: 30px;
-}
-
-.cities label {
-  color: #334680;
-}
-
-.cities input {
-  margin-bottom: 14px;
-  margin-right: 10px;
-}
-
-.checkbox {
-  margin: 0 10px 30px 10px;
-}
-
-.ceckboxLabel {
-  color: #334680;
-}
-
-.location {
-  color: #b9bdcf;
-  font-size: 14px;
-  margin-bottom: 14px;
-}
-
-.searchField {
-  border: none;
-  border-radius: 4px;
-  outline: none;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.247);
-  padding: 10px;
-  width: 100%;
-  margin-bottom: 24px;
-}
-
-.clearButton {
-  margin-left: 10px;
-  outline: none;
-  border: none;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.247);
-  border-radius: 6px;
-  background: white;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 8px;
-  color: #334680c0;
-  transition: all 0.2s;
-  &:hover {
-    color: #334680ea;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.459);
-  }
-}
+@import './SideBar.scss';
 </style>

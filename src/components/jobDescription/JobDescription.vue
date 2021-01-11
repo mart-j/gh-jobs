@@ -22,14 +22,14 @@ import moment from 'moment';
 import { JobType } from '../../mixins/apiMixin';
 
 export default defineComponent({
-  props: {
-    position: { type: Object as () => JobType, required: true },
-  },
-  computed: {
-    moment() {
-      return moment;
-    },
-  },
+	props: {
+		position: { type: Object as () => JobType, required: true },
+	},
+	computed: {
+		moment() {
+			return moment;
+		},
+	},
 });
 </script>
 
