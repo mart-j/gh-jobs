@@ -1,10 +1,9 @@
 <template>
-
-      <div class="row">
-        <div class="col-xs-offset-1 col-xs-10">
-          <Logo />
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10">
+      <Logo />
+    </div>
+  </div>
   <router-view />
 </template>
 <script lang="ts">
@@ -23,5 +22,9 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: #f6f7fb;
   font-weight: 500;
+}
+.logo {
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 </style>

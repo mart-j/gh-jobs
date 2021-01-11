@@ -57,7 +57,8 @@ export default defineComponent({
       return this.fullTime ? 'Full Time' : '';
     },
     filteredJobs(): JobType[] {
-      return this.jobList.filter((job) => {
+      // eslint-disable-next-line arrow-parens
+      return this.jobList.filter(job => {
         const { type, location } = job;
         const includesCity = location.toLowerCase().includes(this.selectedCity.toLowerCase());
         const includesType = type === 'Full Time';
@@ -68,7 +69,8 @@ export default defineComponent({
       });
     },
     searchTitles(): JobType[] {
-      return this.filteredJobs.filter((job) => {
+      // eslint-disable-next-line arrow-parens
+      return this.filteredJobs.filter(job => {
         const title = this.title.toLowerCase();
         return job.title.toLowerCase().includes(title);
       });

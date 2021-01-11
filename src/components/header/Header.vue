@@ -14,11 +14,10 @@ export default defineComponent({
   components: { SearchField },
   emits: ['update:inputValue'],
   data() {
-    return {
-    };
+    return {};
   },
   props: {
-    searchHandler: { type: Function },
+    searchHandler: { type: Function, required: true },
     title: { type: String, required: true },
   },
 });
