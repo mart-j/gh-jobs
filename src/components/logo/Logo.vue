@@ -1,5 +1,5 @@
 <template>
-	<div class="logo"><b>Github</b> Jobs</div>
+  <div class="logo"><b>Github</b> Jobs</div>
 </template>
 
 <script lang="ts">

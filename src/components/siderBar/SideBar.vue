@@ -68,11 +68,11 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-	emits: ['update:searchCity', 'clickHandler', 'update:selectedCity', 'update:fullTime'],
-	props: {
-		fullTime: { type: Boolean, required: true },
-		selectedCity: { type: String, required: true },
-	},
+  emits: ['update:searchCity', 'clickHandler', 'update:selectedCity', 'update:fullTime'],
+  props: {
+    fullTime: { type: Boolean, required: true },
+    selectedCity: { type: String, required: true },
+  },
 });
 </script>
 

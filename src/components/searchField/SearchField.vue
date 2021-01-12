@@ -30,22 +30,22 @@ import { defineComponent } from 'vue';
 import 'flexboxgrid';
 
 export default defineComponent({
-	emits: ['searchHandler', 'update:inputValue'],
-	props: {
-		searchHandler: { type: Function, required: true },
-		title: { type: String, required: true },
-	},
-	data() {
-		return {
-			inputValue: '',
-		};
-	},
+  emits: ['searchHandler', 'update:inputValue'],
+  props: {
+    searchHandler: { type: Function, required: true },
+    title: { type: String, required: true },
+  },
+  data() {
+    return {
+      inputValue: '',
+    };
+  },
 
-	methods: {
-		clearSearchField() {
-			this.inputValue = '';
-		},
-	},
+  methods: {
+    clearSearchField() {
+      this.inputValue = '';
+    },
+  },
 });
 </script>
 

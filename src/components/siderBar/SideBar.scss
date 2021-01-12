@@ -1,5 +1,6 @@
 .sidebar {
   padding-right: 20px;
+  margin-bottom: 50px;
 }
 
 .cities {
@@ -60,5 +61,15 @@
   &:hover {
     color: #334680ea;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.459);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .cities {
+    display: none;
+
+  }
+  .clearButton {
+    margin-left: 0;
   }
 }

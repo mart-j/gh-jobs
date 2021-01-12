@@ -30,21 +30,21 @@ import moment from 'moment';
 import { JobType } from '../../mixins/apiMixin';
 
 export default defineComponent({
-	props: {
-		title: {
-			type: String,
-		},
-		filteredJobs: {
-			type: Array as () => JobType[],
-			required: true,
-		},
-	},
+  props: {
+    title: {
+      type: String,
+    },
+    filteredJobs: {
+      type: Array as () => JobType[],
+      required: true,
+    },
+  },
 
-	computed: {
-		moment() {
-			return moment;
-		},
-	},
+  computed: {
+    moment() {
+      return moment;
+    },
+  },
 });
 </script>
 

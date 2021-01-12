@@ -11,15 +11,15 @@ import { defineComponent } from 'vue';
 import SearchField from '../searchField/SearchField.vue';
 
 export default defineComponent({
-	components: { SearchField },
-	emits: ['update:inputValue'],
-	data() {
-		return {};
-	},
-	props: {
-		searchHandler: { type: Function, required: true },
-		title: { type: String, required: true },
-	},
+  components: { SearchField },
+  emits: ['update:inputValue'],
+  data() {
+    return {};
+  },
+  props: {
+    searchHandler: { type: Function, required: true },
+    title: { type: String, required: true },
+  },
 });
 </script>
 
