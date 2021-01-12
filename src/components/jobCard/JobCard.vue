@@ -49,5 +49,5 @@ export default defineComponent({
 </script>
 
 <style style scoped lang="scss">
-@import './SingleJOb.scss';
+@import './JobCard.scss';
 </style>

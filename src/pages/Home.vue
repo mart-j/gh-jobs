@@ -1,47 +1,58 @@
 <template>
-  <div class="row">
-    <div class="col-xs-offset-1 col-xs-10 margin-bottom--42">
-      <Header :searchHandler="searchHandler" :title="title" />
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-offset-1 col-xs-3">
-      <Sidebar
-        :fullTime="fullTime"
-        :selectedCity="selectedCity"
-        v-model:fullTime="fullTime"
-        v-model:selectedCity="selectedCity"
-        v-model:searchCity="selectedCity"
-        @clickHandler="clearAllFilters()"
-      />
-    </div>
-    <div class="col-xs-7">
-      <JobList>
-        <Job :filteredJobs="!title ? splittedArray[pageNumber] : searchTitles" :title="title" />
-      </JobList>
-      <div v-if="!title">
-        <button :disabled="pageNumber < 1" @click="pageNumber -= 1">prev</button>
-        <button :disabled="pageNumber > splittedArray.length - 2" @click="pageNumber += 1">
-          next
-        </button>
-      </div>
-    </div>
-  </div>
+	<div class="row">
+		<div class="col-xs-offset-1 col-xs-10 margin-bottom--42">
+			<Header :searchHandler="searchHandler" :title="title" />
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-offset-1 col-xs-3">
+			<Sidebar
+				:fullTime="fullTime"
+				:selectedCity="selectedCity"
+				v-model:fullTime="fullTime"
+				v-model:selectedCity="selectedCity"
+				v-model:searchCity="selectedCity"
+				@clickHandler="clearAllFilters()"
+			/>
+		</div>
+		<div class="col-xs-7">
+			<JobList>
+				<Job :filteredJobs="!title ? splittedArray[pageNumber] : searchTitles" :title="title" />
+			</JobList>
+			<div v-if="!title" class="row">
+				<div class="col-xs end-xs">
+					<NavigationButton
+						@clickHandler="pageNumber -= 1"
+						:disabled="pageNumber < 1"
+						:direction="'left'"
+					>
+					</NavigationButton>
+					<NavigationButton
+						@clickHandler="pageNumber += 1"
+						:disabled="pageNumber >= splittedArray.length - 1"
+						:direction="'right'"
+					>
+					</NavigationButton>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Job from '../components/singleJob/SingleJob.vue';
+import Job from '../components/jobCard/JobCard.vue';
 import JobList from '../components/jobList/JobList.vue';
 import Header from '../components/header/Header.vue';
 import Sidebar from '../components/siderBar/SideBar.vue';
+import NavigationButton from '../components/navigationButton/NavigationButton.vue';
 import apiMixin, { JobType } from '../mixins/apiMixin';
 
 type Data = {
-  selectedCity: string;
-  fullTime: boolean;
-  title: string;
-  pageNumber: number;
+	selectedCity: string;
+	fullTime: boolean;
+	title: string;
+	pageNumber: number;
 };
 
 export default defineComponent({
@@ -50,6 +61,7 @@ export default defineComponent({
 		Job,
 		Header,
 		Sidebar,
+		NavigationButton,
 	},
 
 	data(): Data {
@@ -72,7 +84,7 @@ export default defineComponent({
 		},
 		filteredJobs(): JobType[] {
 			// eslint-disable-next-line arrow-parens
-			return this.jobList.filter(job => {
+			return this.jobList.filter((job) => {
 				const { type, location } = job;
 				const includesCity = location.toLowerCase().includes(this.selectedCity.toLowerCase());
 				const includesType = type === 'Full Time';
@@ -93,7 +105,7 @@ export default defineComponent({
 		},
 		searchTitles(): JobType[] {
 			// eslint-disable-next-line arrow-parens
-			return this.filteredJobs.filter(job => {
+			return this.filteredJobs.filter((job) => {
 				const title = this.title.toLowerCase();
 				return job.title.toLowerCase().includes(title);
 			});
@@ -116,6 +128,6 @@ export default defineComponent({
 
 <style>
 .margin-bottom--42 {
-  margin-bottom: 42px;
+	margin-bottom: 42px;
 }
 </style>
